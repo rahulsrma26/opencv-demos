@@ -1,0 +1,12 @@
+
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+dependencies:
+  - python=3.8
+  - make
+  - opencv
+  - pip
+  - pip:
+    - -r file:requirements.txt
