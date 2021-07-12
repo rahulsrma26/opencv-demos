@@ -22,10 +22,11 @@ while cap.isOpened():
     # Capture frame-by-frame
     ret, frame = cap.read()
     if ret == True:
-        # Display the resulting frame
+        # Apply effects
         frame = cv2.filter2D(frame, -1, kernel)
         frame = cv2.flip(frame, 1)
         out.write(frame)
+        # Display the resulting frame
         cv2.imshow('Frame', frame)
         # Press Q on keyboard to  exit
         if cv2.waitKey(25) == 27:
