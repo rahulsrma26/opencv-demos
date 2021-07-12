@@ -2,9 +2,10 @@ import os
 import numpy as np
 import cv2
 
+# this can be used to play videos
+# cap = cv2.VideoCapture(os.path.join('tmp', 'test.mp4'))
 
-cap = cv2.VideoCapture(os.path.join('tmp', 'test.mp4'))
-# cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0) # this captures the video from webcam
 w, h = [int(cap.get(i)) for i in range(3, 5)]
 
 # Sepia effect
@@ -13,7 +14,8 @@ kernel = np.array(
      [0.349, 0.686, 0.168],
      [0.393, 0.769, 0.189]])
 
-out = cv2.VideoWriter(os.path.join('tmp', 'output.avi'), cv2.VideoWriter_fourcc(*'MJPG'), 25, (w, h)) 
+outpath = os.path.join('tmp', 'output.avi')
+out = cv2.VideoWriter(outpath, cv2.VideoWriter_fourcc(*'MJPG'), 25, (w, h))
 
 # Read until video is completed
 while cap.isOpened():
@@ -28,7 +30,7 @@ while cap.isOpened():
         # Press Q on keyboard to  exit
         if cv2.waitKey(25) == 27:
             break
-    else: 
+    else:
         break
 
 # When everything done, release the video capture object
